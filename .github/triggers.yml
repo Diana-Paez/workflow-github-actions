@@ -1,0 +1,78 @@
+name: triggers_exercise
+run-name: triggers_workflow
+on: 
+  push:
+    branches:
+      -'main'
+      -'aprendiendo-github-actions'
+    paths:
+      -'**.swift'
+      -'**.yml'
+    tags: 
+      -v1.**
+  issues:
+    types: [opened, edited, milestoned]
+  fork: 
+  pull_request:
+    types:
+      -opened
+    branches:
+      -'main/**'
+    paths:
+      -'**.swift'
+      -'**.yml'
+  issue_comment:
+    types: [created, deleted]
+  schedule:
+    - cron: '30 5,17 * * *'
+  workflow_dispatch:
+    inputs:
+      loglevel:
+        description: "Log Level"
+        required: true
+        default: "warning'
+        type: choice
+        options:
+        -info
+        -warning
+        debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        decription: 'Environment to run test against'
+        type: environment
+        required: true
+  workflow_dispatch:
+    inputs:
+      lenguaje_favorito:
+        description: 'Lenguaje favorito'
+        default: swift
+        required: true
+        type: choice
+        options:
+        - Python
+        - JavaScript
+        - Go
+        -swift
+      nombre:
+        description: 'Tu nombre'
+        required: true
+        default: Diana
+        type: string
+jobs:
+  jobs_triggers_exercise:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+      uses: actions/checkout@v3
+      - name:  Run script
+      run: swift test.swift
+
+  
+    
+
+  
+  
+

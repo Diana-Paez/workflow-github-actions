@@ -1,0 +1,30 @@
+name: Roller-coaster-height-check
+run-name: expressions-workflow-learn
+on:
+  workflow_dispatch:
+    inputs:
+      height:
+        description:  'Height in cm'
+        required: true
+        type: integer
+      name: 
+        description: 'Yuor name'
+        required: true
+        default: 'Lila'
+        type: string
+jobs:
+  can_ride:
+    if: ${{ github.event.inputs.height >= 120}} 
+    runs-on: macos-latest
+    steps:
+      - name: Run script
+        run: echo ${{github.event.inputs.name}} can ride the roller coaster
+
+  cannot_ride:
+    if: ${{ github.event.inputs.height < 120}}
+    runs-on: macos-latest
+    steps:
+      - name: Run script
+        run: echo ${{ github.event.inputs.name}} cannot ride the the roller coaster, but there are other fun rides for him/her
+
+  
