@@ -1,8 +1,10 @@
 name: triggers_exercise
+run-name: triggers_workflow
 on: 
   push:
     branches:
       -'main'
+      -'aprendiendo-github-actions'
     paths:
       -'**.js'
     tags: 
