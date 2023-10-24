@@ -6,7 +6,8 @@ on:
       -'main'
       -'aprendiendo-github-actions'
     paths:
-      -'**.js'
+      -'**.swift'
+      -'**.yml'
     tags: 
       -v1.**
   issues:
@@ -18,7 +19,8 @@ on:
     branches:
       -'main/**'
     paths:
-      -'**.js'
+      -'**.swift'
+      -'**.yml'
   issue_comment:
     types: [created, deleted]
   schedule:
@@ -46,17 +48,18 @@ on:
     inputs:
       lenguaje_favorito:
         description: 'Lenguaje favorito'
-        default: Python
+        default: swift
         required: true
         type: choice
         options:
         - Python
         - JavaScript
         - Go
+        -swift
       nombre:
         description: 'Tu nombre'
         required: true
-        default: Juan
+        default: Diana
         type: string
 jobs:
   jobs_triggers_exercise:
