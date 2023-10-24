@@ -1,0 +1,17 @@
+name: greetings, using variables
+run-name: Iam learning how to use Variables
+on:
+  workflow_disparch:
+env: 
+  WEEKDAY: Wednesday
+jobs: 
+  greetings-variables:
+    run-on: macos-latest
+    env:
+      GREETINGS: Hello
+    steps:
+      -name: Greet
+       run: echo "$GREETINGS, $NAME. Today is $ WEEKDAY!"
+       env:
+       NAME: Luz
+    
